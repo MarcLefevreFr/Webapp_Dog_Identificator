@@ -1,0 +1,59 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+	<style>
+	h5   {color: blue;}
+	</style>
+
+	<hr>
+
+
+	<div class = "row">
+
+
+		<div class="column_right" style="float: left; margin : 0px 20px;">
+
+	    	<h4>Here're the dog...</h4>
+    		{% if filename %}
+        
+             <img src="{{url_for('static', filename = filename)}}" />
+        
+    		{% endif %}
+
+	    </div>
+
+		<div class="column_left" style="float:left;">
+
+	    	<h4>Here're their breed predictions with the confidence levels...</h4>
+
+	    	{% if dico["incep"] %}
+
+	        	<h5>Prediction of retrained InceptionV2 model :</h5>
+
+	        	<ul>
+	            	{% for pred in dico["incep"] %}
+	            	<li>{{ pred }}</li>
+	            	{% endfor %}
+	        	</ul>
+	    
+	    	{% endif %}
+
+	    	{% if dico["eff"] %}
+
+	        	<h5>Prediction of retrained EffNet30 model :</h5>
+
+	        	<ul>
+	            	{% for pred in dico["eff"] %}
+	            	<li>{{ pred }}</li>
+	            	{% endfor %}
+	        	</ul>
+
+	    	{% endif %}
+
+	    </div>   
+	   
+
+	    
+    </div>
+{% endblock %}

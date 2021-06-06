@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>IDENTIFY THE BREED OF A DOG</title>
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" /> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />      
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+<p><h1 align = "center">Upload a dog picture to identify its breed...</h1></p>
+<p align = "center"><em>Go find and download one on <a href="https://www.google.com/search?q=dog+pictures&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjt1OWYm8zwAhVJ6uAKHX2jCuMQ_AUoAXoECAEQAw&biw=1920&bih=888" target = "_blank">Google</em></a>
+<div class="container">
+<div class="row">
+    <!-- <h3>Select a file to upload</h3> -->
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </p>
+
+    <form method="post" action="/" enctype="multipart/form-data">
+        <dl>
+            <p>
+                <input type="file" name="file" class="form-control" autocomplete="off" required>
+            </p>
+        </dl>
+        <p>
+            <input type="submit" value="Submit" class="btn btn-info">
+        </p>
+    </form>
+
+    {% block content %}{% endblock %}
+
+    <hr>
+
+
+
+</div>
+</div>
+</body>
+</html>
