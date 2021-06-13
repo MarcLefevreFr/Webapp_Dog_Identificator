@@ -102,7 +102,7 @@ class Dog_Predictor() :
 
 	def __init__(self):
 
-		self.mod_incep = load_model("static/" + ASSETS + "mod_inception")
+		# self.mod_incep = load_model("static/" + ASSETS + "mod_inception")
 		self.mod_eff = load_model("static/" + ASSETS + "mod_eff30_ftb.h5")
 		self.dico_labels = pickle.load(open("static/" + ASSETS + "dict_labels.pickle", "rb"))
 		self.crop = iaa.size.CropToSquare(position = "center")
@@ -126,12 +126,12 @@ class Dog_Predictor() :
 		img_in = np.expand_dims(img_in, 0)
 		img_eff = np.expand_dims(img_eff, 0)
 
-		pred_in = self.mod_incep.predict([img_in])
+		# pred_in = self.mod_incep.predict([img_in])
 		pred_eff = self.mod_eff.predict([img_eff])
 
-		pred_in_l = list(np.squeeze(pred_in))
-		pred_in_sorted = pred_in_l.copy()
-		pred_in_sorted.sort(reverse = True)
+		# pred_in_l = list(np.squeeze(pred_in))
+		# pred_in_sorted = pred_in_l.copy()
+		# pred_in_sorted.sort(reverse = True)
 
 		pred_eff_l = list(np.squeeze(pred_eff))
 		pred_eff_sorted = pred_eff_l.copy()
@@ -141,12 +141,12 @@ class Dog_Predictor() :
 		dico_res["incep"] = []
 		dico_res["eff"] = []
 
-		for i in pred_in_sorted[:3]:
+		# for i in pred_in_sorted[:3]:
 
 
-			if i > 0.01 :
+		# 	if i > 0.01 :
 
-				dico_res["incep"].append((list(self.dico_labels.keys())[pred_in_l.index(i)], f"{i*100:.2f} % de confiance"))
+		# 		dico_res["incep"].append((list(self.dico_labels.keys())[pred_in_l.index(i)], f"{i*100:.2f} % de confiance"))
 
 		for i in pred_eff_sorted[:3]:
 
